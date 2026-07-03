@@ -1,0 +1,22 @@
+[
+  { "place_id": "lh_001", "name": "Hồ Hoàn Kiếm", "lat": 21.028511, "lng": 105.854166, "image": "https://picsum.photos/seed/hoankiem/400/300" },
+  { "place_id": "lh_002", "name": "Phố Cổ Hà Nội", "lat": 21.0345, "lng": 105.8492, "image": "https://picsum.photos/seed/phocohanoi/400/300" },
+  { "place_id": "lh_003", "name": "Bún Chả Hương Liên", "lat": 21.0182, "lng": 105.8550, "image": "https://picsum.photos/seed/bunchahuonglien/400/300" },
+  { "place_id": "lh_004", "name": "Nhà thờ Lớn Hà Nội", "lat": 21.0287, "lng": 105.8489, "image": "https://picsum.photos/seed/nhatholon/400/300" },
+  { "place_id": "lh_005", "name": "Chùa Trấn Quốc", "lat": 21.0480, "lng": 105.8368, "image": "https://picsum.photos/seed/chuatranquoc/400/300" },
+  { "place_id": "lh_006", "name": "Hoàng Thành Thăng Long", "lat": 21.0345, "lng": 105.8385, "image": "https://picsum.photos/seed/hoangthanh/400/300" },
+  { "place_id": "lh_007", "name": "Lăng Chủ tịch Hồ Chí Minh", "lat": 21.0368, "lng": 105.8346, "image": "https://picsum.photos/seed/langbacho/400/300" },
+  { "place_id": "lh_008", "name": "Văn Miếu - Quốc Tử Giám", "lat": 21.0275, "lng": 105.8354, "image": "https://picsum.photos/seed/vanmieu/400/300" },
+  { "place_id": "lh_009", "name": "Cầu Long Biên", "lat": 21.0416, "lng": 105.8569, "image": "https://picsum.photos/seed/caulongbien/400/300" },
+  { "place_id": "lh_010", "name": "Nhà hát Lớn Hà Nội", "lat": 21.0242, "lng": 105.8576, "image": "https://picsum.photos/seed/nhahatlon/400/300" },
+  { "place_id": "lh_011", "name": "Chợ Đồng Xuân", "lat": 21.0384, "lng": 105.8504, "image": "https://picsum.photos/seed/chodongxuan/400/300" },
+  { "place_id": "lh_012", "name": "Bảo tàng Dân tộc học Việt Nam", "lat": 21.0405, "lng": 105.7973, "image": "https://picsum.photos/seed/baotangdantochoc/400/300" },
+  { "place_id": "lh_013", "name": "Kem Tràng Tiền", "lat": 21.0253, "lng": 105.8549, "image": "https://picsum.photos/seed/kemtrangtien/400/300" },
+  { "place_id": "lh_014", "name": "Phở Gia Truyền Bát Đàn", "lat": 21.0315, "lng": 105.8471, "image": "https://picsum.photos/seed/phobatdan/400/300" },
+  { "place_id": "lh_015", "name": "Cà phê Giảng", "lat": 21.0289, "lng": 105.8517, "image": "https://picsum.photos/seed/caphegiang/400/300" },
+  { "place_id": "lh_016", "name": "Đền Ngọc Sơn", "lat": 21.0305, "lng": 105.8524, "image": "https://picsum.photos/seed/denngocson/400/300" },
+  { "place_id": "lh_017", "name": "Hồ Tây", "lat": 21.0560, "lng": 105.8239, "image": "https://picsum.photos/seed/hotay/400/300" },
+  { "place_id": "lh_018", "name": "Phố Tạ Hiện", "lat": 21.0335, "lng": 105.8510, "image": "https://picsum.photos/seed/photahien/400/300" },
+  { "place_id": "lh_019", "name": "Chả cá Lã Vọng", "lat": 21.0326, "lng": 105.8488, "image": "https://picsum.photos/seed/chacalavong/400/300" },
+  { "place_id": "lh_020", "name": "Làng gốm Bát Tràng", "lat": 20.9782, "lng": 105.9126, "image": "https://picsum.photos/seed/battrang/400/300" }
+]
