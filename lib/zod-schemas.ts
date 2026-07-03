@@ -5,6 +5,8 @@ export const placeSchema = z.object({
   name: z.string(),
   lat: z.coerce.number(),
   lng: z.coerce.number(),
+  category: z.string().optional(),
+  description: z.string().optional(),
   image: z.string(),
 });
 
@@ -15,6 +17,8 @@ export const activitySchema = z.object({
   lng: z.coerce.number(),
   time: z.string(),
   duration: z.coerce.number().describe('Thời gian dự kiến (phút)'),
+  category: z.string().optional(),
+  description: z.string().optional(),
   image: z.string(),
 });
 

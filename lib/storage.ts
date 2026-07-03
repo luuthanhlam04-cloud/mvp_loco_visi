@@ -22,8 +22,8 @@ export const saveToHistory = (itinerary: Itinerary) => {
     
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(newHistory));
-    } catch (e: any) {
-      if (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
+    } catch (e: unknown) {
+      if (e instanceof Error && (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED')) {
         localStorage.setItem(STORAGE_KEY, JSON.stringify([itinerary]));
       } else {
         throw e;

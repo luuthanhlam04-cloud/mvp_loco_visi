@@ -1,22 +1,677 @@
 [
-  { "place_id": "lh_001", "name": "Hồ Hoàn Kiếm", "lat": 21.028511, "lng": 105.854166, "image": "https://picsum.photos/seed/hoankiem/400/300" },
-  { "place_id": "lh_002", "name": "Phố Cổ Hà Nội", "lat": 21.0345, "lng": 105.8492, "image": "https://picsum.photos/seed/phocohanoi/400/300" },
-  { "place_id": "lh_003", "name": "Bún Chả Hương Liên", "lat": 21.0182, "lng": 105.8550, "image": "https://picsum.photos/seed/bunchahuonglien/400/300" },
-  { "place_id": "lh_004", "name": "Nhà thờ Lớn Hà Nội", "lat": 21.0287, "lng": 105.8489, "image": "https://picsum.photos/seed/nhatholon/400/300" },
-  { "place_id": "lh_005", "name": "Chùa Trấn Quốc", "lat": 21.0480, "lng": 105.8368, "image": "https://picsum.photos/seed/chuatranquoc/400/300" },
-  { "place_id": "lh_006", "name": "Hoàng Thành Thăng Long", "lat": 21.0345, "lng": 105.8385, "image": "https://picsum.photos/seed/hoangthanh/400/300" },
-  { "place_id": "lh_007", "name": "Lăng Chủ tịch Hồ Chí Minh", "lat": 21.0368, "lng": 105.8346, "image": "https://picsum.photos/seed/langbacho/400/300" },
-  { "place_id": "lh_008", "name": "Văn Miếu - Quốc Tử Giám", "lat": 21.0275, "lng": 105.8354, "image": "https://picsum.photos/seed/vanmieu/400/300" },
-  { "place_id": "lh_009", "name": "Cầu Long Biên", "lat": 21.0416, "lng": 105.8569, "image": "https://picsum.photos/seed/caulongbien/400/300" },
-  { "place_id": "lh_010", "name": "Nhà hát Lớn Hà Nội", "lat": 21.0242, "lng": 105.8576, "image": "https://picsum.photos/seed/nhahatlon/400/300" },
-  { "place_id": "lh_011", "name": "Chợ Đồng Xuân", "lat": 21.0384, "lng": 105.8504, "image": "https://picsum.photos/seed/chodongxuan/400/300" },
-  { "place_id": "lh_012", "name": "Bảo tàng Dân tộc học Việt Nam", "lat": 21.0405, "lng": 105.7973, "image": "https://picsum.photos/seed/baotangdantochoc/400/300" },
-  { "place_id": "lh_013", "name": "Kem Tràng Tiền", "lat": 21.0253, "lng": 105.8549, "image": "https://picsum.photos/seed/kemtrangtien/400/300" },
-  { "place_id": "lh_014", "name": "Phở Gia Truyền Bát Đàn", "lat": 21.0315, "lng": 105.8471, "image": "https://picsum.photos/seed/phobatdan/400/300" },
-  { "place_id": "lh_015", "name": "Cà phê Giảng", "lat": 21.0289, "lng": 105.8517, "image": "https://picsum.photos/seed/caphegiang/400/300" },
-  { "place_id": "lh_016", "name": "Đền Ngọc Sơn", "lat": 21.0305, "lng": 105.8524, "image": "https://picsum.photos/seed/denngocson/400/300" },
-  { "place_id": "lh_017", "name": "Hồ Tây", "lat": 21.0560, "lng": 105.8239, "image": "https://picsum.photos/seed/hotay/400/300" },
-  { "place_id": "lh_018", "name": "Phố Tạ Hiện", "lat": 21.0335, "lng": 105.8510, "image": "https://picsum.photos/seed/photahien/400/300" },
-  { "place_id": "lh_019", "name": "Chả cá Lã Vọng", "lat": 21.0326, "lng": 105.8488, "image": "https://picsum.photos/seed/chacalavong/400/300" },
-  { "place_id": "lh_020", "name": "Làng gốm Bát Tràng", "lat": 20.9782, "lng": 105.9126, "image": "https://picsum.photos/seed/battrang/400/300" }
+  {
+    "place_id": "lh_001",
+    "name": "Hồ Hoàn Kiếm",
+    "lat": 21.028511,
+    "lng": 105.854166,
+    "category": "Di tích lịch sử",
+    "description": "Trái tim của thủ đô với Tháp Rùa và Đền Ngọc Sơn.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Hoan_Kiem.jpg"
+  },
+  {
+    "place_id": "lh_002",
+    "name": "Hoàng Thành Thăng Long",
+    "lat": 21.0345,
+    "lng": 105.8385,
+    "category": "Di tích lịch sử",
+    "description": "Quần thể di tích gắn với lịch sử kinh thành Thăng Long.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Hanoi_location_map_%282025%29.svg/960px-Hanoi_location_map_%282025%29.svg.png"
+  },
+  {
+    "place_id": "lh_003",
+    "name": "Lăng Chủ tịch Hồ Chí Minh",
+    "lat": 21.0368,
+    "lng": 105.8346,
+    "category": "Di tích lịch sử",
+    "description": "Nơi an nghỉ của Bác Hồ, Quảng trường Ba Đình lịch sử.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Ho_Chi_Minh_-_1946_Portrait.jpg/960px-Ho_Chi_Minh_-_1946_Portrait.jpg"
+  },
+  {
+    "place_id": "lh_004",
+    "name": "Văn Miếu - Quốc Tử Giám",
+    "lat": 21.0275,
+    "lng": 105.8354,
+    "category": "Di tích lịch sử",
+    "description": "Trường đại học đầu tiên của Việt Nam, biểu tượng hiếu học.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Hanoi_Temple_of_Literature_%28cropped%29.jpg/960px-Hanoi_Temple_of_Literature_%28cropped%29.jpg"
+  },
+  {
+    "place_id": "lh_005",
+    "name": "Cầu Long Biên",
+    "lat": 21.0416,
+    "lng": 105.8569,
+    "category": "Di tích lịch sử",
+    "description": "Chứng nhân lịch sử với kiến trúc Pháp cổ kính vắt ngang sông Hồng.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Long_bien_bridge.jpg/960px-Long_bien_bridge.jpg"
+  },
+  {
+    "place_id": "lh_006",
+    "name": "Nhà tù Hỏa Lò",
+    "lat": 21.0253,
+    "lng": 105.8465,
+    "category": "Di tích lịch sử",
+    "description": "Di tích lịch sử gợi nhớ về một thời kỳ kháng chiến gian khổ.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Ho%E1%BA%A3_L%C3%B2.jpg/960px-Ho%E1%BA%A3_L%C3%B2.jpg"
+  },
+  {
+    "place_id": "lh_007",
+    "name": "Cột cờ Hà Nội",
+    "lat": 21.0327,
+    "lng": 105.8396,
+    "category": "Di tích lịch sử",
+    "description": "Biểu tượng lịch sử kiêu hãnh của thủ đô Hà Nội.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Flag_tower%2C_Hanoi.jpg"
+  },
+  {
+    "place_id": "lh_008",
+    "name": "Phố Cổ Hà Nội",
+    "lat": 21.0345,
+    "lng": 105.8492,
+    "category": "Di tích lịch sử",
+    "description": "Khu phố 36 phố phường lưu giữ nét văn hóa ngàn năm.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Hanoi_shophouse_2.jpg/960px-Hanoi_shophouse_2.jpg"
+  },
+  {
+    "place_id": "lh_009",
+    "name": "Đền Quán Thánh",
+    "lat": 21.0418,
+    "lng": 105.8372,
+    "category": "Di tích lịch sử",
+    "description": "Một trong Thăng Long Tứ Trấn bảo vệ kinh thành xưa.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Hanoi_-_Quan-Thanh-Tempel_0001.JPG/960px-Hanoi_-_Quan-Thanh-Tempel_0001.JPG"
+  },
+  {
+    "place_id": "lh_010",
+    "name": "Ô Quan Chưởng",
+    "lat": 21.0381,
+    "lng": 105.8521,
+    "category": "Di tích lịch sử",
+    "description": "Cửa ô duy nhất còn sót lại của Hoàng thành Thăng Long.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Hanoi%2C_Vietnam_%2812036443176%29.jpg/960px-Hanoi%2C_Vietnam_%2812036443176%29.jpg"
+  },
+  {
+    "place_id": "lh_011",
+    "name": "Bún Chả Hương Liên",
+    "lat": 21.0182,
+    "lng": 105.855,
+    "category": "Ẩm thực",
+    "description": "Quán bún chả nổi tiếng từng đón cựu Tổng thống Obama.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=997"
+  },
+  {
+    "place_id": "lh_012",
+    "name": "Phở Gia Truyền Bát Đàn",
+    "lat": 21.0315,
+    "lng": 105.8471,
+    "category": "Ẩm thực",
+    "description": "Hương vị phở bò truyền thống xếp hàng nức tiếng phố cổ.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=57"
+  },
+  {
+    "place_id": "lh_013",
+    "name": "Phở Thìn Lò Đúc",
+    "lat": 21.0163,
+    "lng": 105.8562,
+    "category": "Ẩm thực",
+    "description": "Đặc trưng với nước dùng béo ngậy và thịt bò xào tái lăn.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=273"
+  },
+  {
+    "place_id": "lh_014",
+    "name": "Chả cá Lã Vọng",
+    "lat": 21.0326,
+    "lng": 105.8488,
+    "category": "Ẩm thực",
+    "description": "Món ăn độc đáo mang đậm bản sắc ẩm thực Hà Thành.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=369"
+  },
+  {
+    "place_id": "lh_015",
+    "name": "Bún Đậu Ngõ Trạm",
+    "lat": 21.0302,
+    "lng": 105.8463,
+    "category": "Ẩm thực",
+    "description": "Mẹt bún đậu mắm tôm full topping cực hấp dẫn.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=252"
+  },
+  {
+    "place_id": "lh_016",
+    "name": "Bánh mì Dân Tổ",
+    "lat": 21.0349,
+    "lng": 105.8475,
+    "category": "Ẩm thực",
+    "description": "Món bánh mì xào thập cẩm quen thuộc của cú đêm.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=451"
+  },
+  {
+    "place_id": "lh_017",
+    "name": "Phở Cuốn Hương Mai",
+    "lat": 21.0456,
+    "lng": 105.8401,
+    "category": "Ẩm thực",
+    "description": "Phở cuốn thịt bò rau thơm chấm nước mắm chua ngọt.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=907"
+  },
+  {
+    "place_id": "lh_018",
+    "name": "Xôi Yến",
+    "lat": 21.0331,
+    "lng": 105.8524,
+    "category": "Ẩm thực",
+    "description": "Quán xôi xéo với đa dạng các loại chả, trứng, thịt kho.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=147"
+  },
+  {
+    "place_id": "lh_019",
+    "name": "Bún Ốc Bà Lương",
+    "lat": 21.0132,
+    "lng": 105.8285,
+    "category": "Ẩm thực",
+    "description": "Nước dùng chua thanh, ốc béo ngậy, chuối đậu tuyệt hảo.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=253"
+  },
+  {
+    "place_id": "lh_020",
+    "name": "Nem Chua Rán Ngõ Tạm Thương",
+    "lat": 21.0308,
+    "lng": 105.8485,
+    "category": "Ẩm thực",
+    "description": "Thiên đường ăn vặt với nem chua rán giòn rụm.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=510"
+  },
+  {
+    "place_id": "lh_021",
+    "name": "Cafe Giảng (Cafe Trứng)",
+    "lat": 21.0289,
+    "lng": 105.8517,
+    "category": "Ẩm thực",
+    "description": "Nơi khai sinh ra món cafe trứng béo ngậy huyền thoại.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=672"
+  },
+  {
+    "place_id": "lh_022",
+    "name": "Kem Tràng Tiền",
+    "lat": 21.0253,
+    "lng": 105.8549,
+    "category": "Ẩm thực",
+    "description": "Hương vị kem cốm, kem sữa dừa gắn liền với tuổi thơ.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=560"
+  },
+  {
+    "place_id": "lh_023",
+    "name": "Bánh tôm Hồ Tây",
+    "lat": 21.0485,
+    "lng": 105.836,
+    "category": "Ẩm thực",
+    "description": "Bánh tôm chiên giòn tan thưởng thức ngay bên bờ hồ.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=785"
+  },
+  {
+    "place_id": "lh_024",
+    "name": "Bún thang Bà Đức",
+    "lat": 21.0321,
+    "lng": 105.8501,
+    "category": "Ẩm thực",
+    "description": "Bát bún thang thanh tao, tinh tế đầy đủ sắc màu.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=746"
+  },
+  {
+    "place_id": "lh_025",
+    "name": "Bánh cuốn Thanh Trì (Bà Hoành)",
+    "lat": 21.0156,
+    "lng": 105.8499,
+    "category": "Ẩm thực",
+    "description": "Bánh cuốn tráng mỏng tang ăn kèm chả quế thơm lừng.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=964"
+  },
+  {
+    "place_id": "lh_026",
+    "name": "Cốm làng Vòng",
+    "lat": 21.0388,
+    "lng": 105.7874,
+    "category": "Ẩm thực",
+    "description": "Thức quà mùa thu Hà Nội gói trong lá sen thơm.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=933"
+  },
+  {
+    "place_id": "lh_027",
+    "name": "Bia Hơi Hải Xồm",
+    "lat": 21.0215,
+    "lng": 105.8423,
+    "category": "Ẩm thực",
+    "description": "Trải nghiệm văn hóa uống bia hơi vỉa hè nhộn nhịp.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=472"
+  },
+  {
+    "place_id": "lh_028",
+    "name": "Cà phê Lâm",
+    "lat": 21.0284,
+    "lng": 105.8532,
+    "category": "Ẩm thực",
+    "description": "Quán cafe cổ với những bức tranh của các danh họa Việt.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=47"
+  },
+  {
+    "place_id": "lh_029",
+    "name": "Chè Bốn Mùa",
+    "lat": 21.031,
+    "lng": 105.848,
+    "category": "Ẩm thực",
+    "description": "Hàng chè truyền thống giải nhiệt mùa hè nức tiếng.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=46"
+  },
+  {
+    "place_id": "lh_030",
+    "name": "Bò nướng Mã Mây",
+    "lat": 21.034,
+    "lng": 105.852,
+    "category": "Ẩm thực",
+    "description": "Thịt bò nướng chảo gang xèo xèo thơm nức cả con phố.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=887"
+  },
+  {
+    "place_id": "lh_031",
+    "name": "Nhà hát Lớn Hà Nội",
+    "lat": 21.0242,
+    "lng": 105.8576,
+    "category": "Văn hóa",
+    "description": "Công trình kiến trúc mô phỏng nhà hát Opera Paris lộng lẫy.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=189"
+  },
+  {
+    "place_id": "lh_032",
+    "name": "Nhà thờ Lớn Hà Nội",
+    "lat": 21.0287,
+    "lng": 105.8489,
+    "category": "Tâm linh",
+    "description": "Kiến trúc Gothic cổ kính, điểm check-in quen thuộc của giới trẻ.",
+    "image": "https://loremflickr.com/600/400/temple,hanoi?lock=533"
+  },
+  {
+    "place_id": "lh_033",
+    "name": "Chùa Trấn Quốc",
+    "lat": 21.048,
+    "lng": 105.8368,
+    "category": "Tâm linh",
+    "description": "Ngôi chùa cổ nhất Hà Nội nằm yên bình trên Hồ Tây.",
+    "image": "https://loremflickr.com/600/400/temple,hanoi?lock=607"
+  },
+  {
+    "place_id": "lh_034",
+    "name": "Phủ Tây Hồ",
+    "lat": 21.0635,
+    "lng": 105.8252,
+    "category": "Tâm linh",
+    "description": "Nơi thờ chúa Liễu Hạnh, điểm cầu may linh thiêng.",
+    "image": "https://loremflickr.com/600/400/temple,hanoi?lock=49"
+  },
+  {
+    "place_id": "lh_035",
+    "name": "Đền Ngọc Sơn",
+    "lat": 21.0305,
+    "lng": 105.8524,
+    "category": "Tâm linh",
+    "description": "Nằm trên đảo ngọc giữa lòng Hồ Gươm, có cầu Thê Húc đỏ rực.",
+    "image": "https://loremflickr.com/600/400/temple,hanoi?lock=254"
+  },
+  {
+    "place_id": "lh_036",
+    "name": "Bảo tàng Mỹ thuật Việt Nam",
+    "lat": 21.0298,
+    "lng": 105.8361,
+    "category": "Văn hóa",
+    "description": "Nơi lưu giữ những kiệt tác nghệ thuật hội họa Việt.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=452"
+  },
+  {
+    "place_id": "lh_037",
+    "name": "Bảo tàng Dân tộc học",
+    "lat": 21.0405,
+    "lng": 105.7973,
+    "category": "Văn hóa",
+    "description": "Trưng bày văn hóa, phong tục của 54 dân tộc anh em.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=480"
+  },
+  {
+    "place_id": "lh_038",
+    "name": "Nhà hát Múa rối nước Thăng Long",
+    "lat": 21.0315,
+    "lng": 105.8532,
+    "category": "Văn hóa",
+    "description": "Thưởng thức nghệ thuật dân gian múa rối nước độc đáo.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=441"
+  },
+  {
+    "place_id": "lh_039",
+    "name": "Bảo tàng Phụ nữ Việt Nam",
+    "lat": 21.0234,
+    "lng": 105.8501,
+    "category": "Văn hóa",
+    "description": "Khám phá lịch sử và vẻ đẹp của người phụ nữ Việt.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=320"
+  },
+  {
+    "place_id": "lh_040",
+    "name": "Làng gốm Bát Tràng",
+    "lat": 20.9782,
+    "lng": 105.9126,
+    "category": "Văn hóa",
+    "description": "Làng nghề gốm sứ truyền thống có từ hàng trăm năm.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=337"
+  },
+  {
+    "place_id": "lh_041",
+    "name": "Chùa Một Cột",
+    "lat": 21.0361,
+    "lng": 105.8336,
+    "category": "Tâm linh",
+    "description": "Ngôi chùa có kiến trúc độc đáo hình đóa sen trên mặt nước.",
+    "image": "https://loremflickr.com/600/400/temple,hanoi?lock=176"
+  },
+  {
+    "place_id": "lh_042",
+    "name": "Đền Bạch Mã",
+    "lat": 21.0354,
+    "lng": 105.8512,
+    "category": "Tâm linh",
+    "description": "Đông trấn trong Thăng Long Tứ Trấn, gắn liền với vua Lý Thái Tổ.",
+    "image": "https://loremflickr.com/600/400/temple,hanoi?lock=796"
+  },
+  {
+    "place_id": "lh_043",
+    "name": "Bảo tàng Lịch sử Quốc gia",
+    "lat": 21.025,
+    "lng": 105.8584,
+    "category": "Văn hóa",
+    "description": "Kiến trúc Đông Dương ấn tượng, lưu giữ hàng ngàn hiện vật.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=425"
+  },
+  {
+    "place_id": "lh_044",
+    "name": "Làng lụa Vạn Phúc",
+    "lat": 20.9765,
+    "lng": 105.7723,
+    "category": "Văn hóa",
+    "description": "Nơi dệt nên những tấm lụa Hà Đông mềm mại nổi tiếng.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=541"
+  },
+  {
+    "place_id": "lh_045",
+    "name": "Hoàng thành Thăng Long (Khảo cổ)",
+    "lat": 21.0345,
+    "lng": 105.8385,
+    "category": "Văn hóa",
+    "description": "Khu vực khảo cổ hé lộ ngàn năm lịch sử kinh thành.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=386"
+  },
+  {
+    "place_id": "lh_046",
+    "name": "Phố đi bộ Hồ Gươm",
+    "lat": 21.0285,
+    "lng": 105.8541,
+    "category": "Giải trí",
+    "description": "Không gian nhộn nhịp dịp cuối tuần với nhiều hoạt động đường phố.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=422"
+  },
+  {
+    "place_id": "lh_047",
+    "name": "Phố bia Tạ Hiện",
+    "lat": 21.0335,
+    "lng": 105.851,
+    "category": "Giải trí",
+    "description": "Khu phố Tây sầm uất bậc nhất về đêm ở Hà Nội.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=605"
+  },
+  {
+    "place_id": "lh_048",
+    "name": "Hồ Tây",
+    "lat": 21.056,
+    "lng": 105.8239,
+    "category": "Cảnh quan",
+    "description": "Đạp vịt, hóng gió và ngắm hoàng hôn lãng mạn nhất thủ đô.",
+    "image": "https://loremflickr.com/600/400/nature,hanoi?lock=475"
+  },
+  {
+    "place_id": "lh_049",
+    "name": "Lotte Observation Deck",
+    "lat": 21.0317,
+    "lng": 105.8123,
+    "category": "Giải trí",
+    "description": "Ngắm nhìn toàn cảnh thành phố Hà Nội từ trên cao.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=669"
+  },
+  {
+    "place_id": "lh_050",
+    "name": "VinKE & Vinpearl Aquarium (Times City)",
+    "lat": 20.9954,
+    "lng": 105.8675,
+    "category": "Giải trí",
+    "description": "Thủy cung lớn nhất Hà Nội với hàng ngàn sinh vật biển.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=284"
+  },
+  {
+    "place_id": "lh_051",
+    "name": "Công viên Thống Nhất",
+    "lat": 21.0158,
+    "lng": 105.845,
+    "category": "Cảnh quan",
+    "description": "Lá phổi xanh của thành phố, thích hợp dạo bộ, thư giãn.",
+    "image": "https://loremflickr.com/600/400/nature,hanoi?lock=776"
+  },
+  {
+    "place_id": "lh_052",
+    "name": "Bãi đá sông Hồng",
+    "lat": 21.0665,
+    "lng": 105.8258,
+    "category": "Cảnh quan",
+    "description": "Địa điểm cắm trại và chụp ảnh với muôn loài hoa.",
+    "image": "https://loremflickr.com/600/400/nature,hanoi?lock=204"
+  },
+  {
+    "place_id": "lh_053",
+    "name": "Đường Phan Đình Phùng",
+    "lat": 21.0396,
+    "lng": 105.8383,
+    "category": "Cảnh quan",
+    "description": "Con đường rợp bóng cây xanh mát đẹp nhất Hà Nội.",
+    "image": "https://loremflickr.com/600/400/nature,hanoi?lock=836"
+  },
+  {
+    "place_id": "lh_054",
+    "name": "Cầu Nhật Tân",
+    "lat": 21.0927,
+    "lng": 105.8214,
+    "category": "Cảnh quan",
+    "description": "Cây cầu dây văng hiện đại lung linh sắc màu về đêm.",
+    "image": "https://loremflickr.com/600/400/nature,hanoi?lock=705"
+  },
+  {
+    "place_id": "lh_055",
+    "name": "Phố bích họa Phùng Hưng",
+    "lat": 21.0356,
+    "lng": 105.8452,
+    "category": "Cảnh quan",
+    "description": "Những vòm cầu cổ được biến thành các bức tranh nghệ thuật.",
+    "image": "https://loremflickr.com/600/400/nature,hanoi?lock=463"
+  },
+  {
+    "place_id": "lh_056",
+    "name": "Lăng Bác (Lễ Thượng Cờ)",
+    "lat": 21.0368,
+    "lng": 105.8346,
+    "category": "Giải trí",
+    "description": "Trải nghiệm xem lễ thượng cờ trang nghiêm lúc 6h sáng.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=821"
+  },
+  {
+    "place_id": "lh_057",
+    "name": "Khu vui chơi Sun Plaza",
+    "lat": 21.0261,
+    "lng": 105.8524,
+    "category": "Giải trí",
+    "description": "Khu giải trí và mua sắm hiện đại gần Hồ Gươm.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=887"
+  },
+  {
+    "place_id": "lh_058",
+    "name": "Nhà sách Mão (Phố Đinh Lễ)",
+    "lat": 21.0268,
+    "lng": 105.8542,
+    "category": "Giải trí",
+    "description": "Hẻm sách lâu đời với cầu thang xoắn ốc tuyệt đẹp.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=431"
+  },
+  {
+    "place_id": "lh_059",
+    "name": "Đài quan sát Landmark 72",
+    "lat": 21.0175,
+    "lng": 105.7838,
+    "category": "Giải trí",
+    "description": "Tòa nhà cao nhất Hà Nội với khu giải trí, rạp chiếu phim.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=362"
+  },
+  {
+    "place_id": "lh_060",
+    "name": "Phố sách Hà Nội (19/12)",
+    "lat": 21.0245,
+    "lng": 105.8458,
+    "category": "Cảnh quan",
+    "description": "Không gian yên tĩnh ngập tràn sách và cây xanh.",
+    "image": "https://loremflickr.com/600/400/nature,hanoi?lock=810"
+  },
+  {
+    "place_id": "lh_061",
+    "name": "Chợ Đồng Xuân",
+    "lat": 21.0384,
+    "lng": 105.8504,
+    "category": "Mua sắm",
+    "description": "Khu chợ đầu mối sầm uất và lâu đời nhất khu phố cổ.",
+    "image": "https://loremflickr.com/600/400/market,hanoi?lock=54"
+  },
+  {
+    "place_id": "lh_062",
+    "name": "Chợ Đêm Phố Cổ",
+    "lat": 21.0345,
+    "lng": 105.8515,
+    "category": "Mua sắm",
+    "description": "Khu chợ mở vào cuối tuần với hàng ngàn gian hàng.",
+    "image": "https://loremflickr.com/600/400/market,hanoi?lock=601"
+  },
+  {
+    "place_id": "lh_063",
+    "name": "Tràng Tiền Plaza",
+    "lat": 21.025,
+    "lng": 105.853,
+    "category": "Mua sắm",
+    "description": "Trung tâm thương mại xa xỉ nằm ngay cạnh Hồ Gươm.",
+    "image": "https://loremflickr.com/600/400/market,hanoi?lock=721"
+  },
+  {
+    "place_id": "lh_064",
+    "name": "Vincom Center Bà Triệu",
+    "lat": 21.0105,
+    "lng": 105.8491,
+    "category": "Mua sắm",
+    "description": "Khu mua sắm, rạp chiếu phim và giải trí sôi động.",
+    "image": "https://loremflickr.com/600/400/market,hanoi?lock=827"
+  },
+  {
+    "place_id": "lh_065",
+    "name": "Lotte Mall Tây Hồ",
+    "lat": 21.0775,
+    "lng": 105.8118,
+    "category": "Mua sắm",
+    "description": "Tổ hợp giải trí, thủy cung và mua sắm lớn nhất mặt hồ.",
+    "image": "https://loremflickr.com/600/400/market,hanoi?lock=763"
+  },
+  {
+    "place_id": "lh_066",
+    "name": "Aeon Mall Long Biên",
+    "lat": 21.0265,
+    "lng": 105.9014,
+    "category": "Mua sắm",
+    "description": "Đại siêu thị Nhật Bản với thiên đường ẩm thực giá rẻ.",
+    "image": "https://loremflickr.com/600/400/market,hanoi?lock=953"
+  },
+  {
+    "place_id": "lh_067",
+    "name": "Phố Hàng Mã",
+    "lat": 21.0378,
+    "lng": 105.8478,
+    "category": "Cảnh quan",
+    "description": "Con phố rực rỡ sắc màu, đặc biệt lung linh vào các dịp lễ.",
+    "image": "https://loremflickr.com/600/400/nature,hanoi?lock=680"
+  },
+  {
+    "place_id": "lh_068",
+    "name": "Phố Hàng Bạc",
+    "lat": 21.0335,
+    "lng": 105.8518,
+    "category": "Mua sắm",
+    "description": "Khu phố lâu đời chuyên chế tác và buôn bán trang sức.",
+    "image": "https://loremflickr.com/600/400/market,hanoi?lock=544"
+  },
+  {
+    "place_id": "lh_069",
+    "name": "Chợ hoa Quảng Bá",
+    "lat": 21.0668,
+    "lng": 105.8275,
+    "category": "Mua sắm",
+    "description": "Chợ hoa đêm rực rỡ sắc màu lớn nhất thủ đô.",
+    "image": "https://loremflickr.com/600/400/market,hanoi?lock=385"
+  },
+  {
+    "place_id": "lh_070",
+    "name": "Phố Hàng Đào",
+    "lat": 21.0342,
+    "lng": 105.8509,
+    "category": "Mua sắm",
+    "description": "Trung tâm buôn bán tơ lụa và quần áo sầm uất.",
+    "image": "https://loremflickr.com/600/400/market,hanoi?lock=763"
+  },
+  {
+    "place_id": "lh_071",
+    "name": "Complex 01 Tây Sơn",
+    "lat": 21.0118,
+    "lng": 105.8239,
+    "category": "Giải trí",
+    "description": "Tổ hợp quán cafe, pop-up store mang phong cách vintage.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=316"
+  },
+  {
+    "place_id": "lh_072",
+    "name": "Hẻm bia Lost in HongKong",
+    "lat": 21.0345,
+    "lng": 105.851,
+    "category": "Giải trí",
+    "description": "Quán bia décor đậm chất điện ảnh Hồng Kông.",
+    "image": "https://loremflickr.com/600/400/hanoi?lock=465"
+  },
+  {
+    "place_id": "lh_073",
+    "name": "The Note Coffee",
+    "lat": 21.0315,
+    "lng": 105.8532,
+    "category": "Ẩm thực",
+    "description": "Quán cafe dán đầy giấy nhớ sắc màu ngay Hồ Gươm.",
+    "image": "https://loremflickr.com/600/400/vietnam,food?lock=323"
+  },
+  {
+    "place_id": "lh_074",
+    "name": "Bốt Hàng Đậu",
+    "lat": 21.0395,
+    "lng": 105.8475,
+    "category": "Cảnh quan",
+    "description": "Tháp nước cổ kính có kiến trúc rêu phong tuyệt đẹp.",
+    "image": "https://loremflickr.com/600/400/nature,hanoi?lock=142"
+  },
+  {
+    "place_id": "lh_075",
+    "name": "Chợ Long Biên (Chợ Đêm)",
+    "lat": 21.0425,
+    "lng": 105.851,
+    "category": "Cảnh quan",
+    "description": "Chợ đầu mối hoa quả hoạt động nhộn nhịp nhất lúc 3h sáng.",
+    "image": "https://loremflickr.com/600/400/nature,hanoi?lock=191"
+  }
 ]

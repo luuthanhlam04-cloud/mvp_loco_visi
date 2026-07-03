@@ -1,43 +1,135 @@
-import { streamObject } from 'ai';
-import { anthropic } from '@ai-sdk/anthropic';
-import { itinerarySchema } from '../../../lib/zod-schemas';
-import { generateSystemPrompt } from '../../../lib/prompt-templates';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 export const runtime = 'nodejs';
 
-// Plan C: Fallback Itinerary
-const FALLBACK_ITINERARY = {
-  source: "fallback",
-  city: "Hà Nội",
-  activities: [
-    { place_id: "lh_001", name: "Hồ Hoàn Kiếm", lat: 21.028511, lng: 105.854166, time: "08:00", duration: 90, image: "https://picsum.photos/seed/hoankiem/400/300" },
-    { place_id: "lh_002", name: "Phố Cổ Hà Nội", lat: 21.0345, lng: 105.8492, time: "09:30", duration: 120, image: "https://picsum.photos/seed/phocohanoi/400/300" },
-    { place_id: "lh_003", name: "Bún Chả Hương Liên", lat: 21.0182, lng: 105.8550, time: "12:00", duration: 60, image: "https://picsum.photos/seed/bunchahuonglien/400/300" },
-    { place_id: "lh_004", name: "Nhà thờ Lớn Hà Nội", lat: 21.0287, lng: 105.8489, time: "14:00", duration: 60, image: "https://picsum.photos/seed/nhatholon/400/300" },
-    { place_id: "lh_005", name: "Chùa Trấn Quốc", lat: 21.0480, lng: 105.8368, time: "15:30", duration: 90, image: "https://picsum.photos/seed/chuatranquoc/400/300" },
-    { place_id: "lh_011", name: "Chợ Đồng Xuân", lat: 21.0384, lng: 105.8504, time: "17:30", duration: 60, image: "https://picsum.photos/seed/chodongxuan/400/300" },
-    { place_id: "lh_013", name: "Kem Tràng Tiền", lat: 21.0253, lng: 105.8549, time: "19:00", duration: 30, image: "https://picsum.photos/seed/kemtrangtien/400/300" }
-  ]
-};
+function delay(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Function to shuffle array
+function shuffle(array: any[]) {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+}
 
 export async function POST(req: Request) {
-  try {
-    const { prompt } = await req.json();
+  const { prompt } = await req.json();
+  const lowerPrompt = (prompt || "").toLowerCase();
 
-    const result = await streamObject({
-      model: anthropic('claude-3-haiku-20240307'),
-      system: generateSystemPrompt(),
-      prompt,
-      schema: itinerarySchema,
-    });
+  // Đọc dữ liệu từ mock_hanoi_places.json thay vì dùng fix cứng
+  const filePath = path.join(process.cwd(), 'data', 'mock_hanoi_places.json');
+  const fileContent = await fs.readFile(filePath, 'utf-8');
+  const allPlaces = JSON.parse(fileContent);
 
-    return result.toTextStreamResponse();
-  } catch (error) {
-    console.error("Claude API error:", error);
-    // KHÔNG crash — trả về fallback itinerary
-    return new Response(JSON.stringify(FALLBACK_ITINERARY), {
-      status: 200,
-      headers: { "Content-Type": "application/json" }
-    });
+  // Phân tích từ khóa để chọn thể loại
+  const categoriesToPick: string[] = [];
+  if (lowerPrompt.match(/ăn|ẩm thực|đói|food|nhậu|bia|uống|cafe|chè|phở|bún/)) {
+    categoriesToPick.push('Ẩm thực');
   }
+  if (lowerPrompt.match(/lịch sử|di tích|cổ/)) {
+    categoriesToPick.push('Di tích lịch sử');
+  }
+  if (lowerPrompt.match(/văn hóa|bảo tàng|nghệ thuật/)) {
+    categoriesToPick.push('Văn hóa');
+  }
+  if (lowerPrompt.match(/tâm linh|đền|chùa|nhà thờ|cầu an/)) {
+    categoriesToPick.push('Tâm linh');
+  }
+  if (lowerPrompt.match(/giải trí|chơi|vui|sôi động|club|bar/)) {
+    categoriesToPick.push('Giải trí');
+  }
+  if (lowerPrompt.match(/cảnh quan|ngắm|thiên nhiên|chụp|sống ảo|cây/)) {
+    categoriesToPick.push('Cảnh quan');
+  }
+  if (lowerPrompt.match(/mua sắm|chợ|mall|shopping|quần áo/)) {
+    categoriesToPick.push('Mua sắm');
+  }
+
+  let candidates = allPlaces;
+  if (categoriesToPick.length > 0) {
+    // Lọc những địa điểm thuộc các category đã chọn
+    candidates = allPlaces.filter((p: any) => categoriesToPick.includes(p.category));
+    // Nếu quá ít địa điểm (ví dụ < 4), trộn thêm các địa điểm khác cho đủ
+    if (candidates.length < 4) {
+      const others = allPlaces.filter((p: any) => !categoriesToPick.includes(p.category));
+      candidates = [...candidates, ...shuffle(others).slice(0, 4 - candidates.length)];
+    }
+  }
+
+  // Xáo trộn để mỗi lần sinh kịch bản ra 1 kết quả khác nhau
+  candidates = shuffle(candidates);
+  
+  // Chọn từ 5 đến 7 địa điểm
+  const numPlaces = Math.floor(Math.random() * 3) + 5;
+  const selectedPlaces = candidates.slice(0, numPlaces);
+
+  // Sắp xếp lại lịch trình theo một logic thời gian giả lập
+  let currentTime = 8 * 60; // Bắt đầu lúc 8:00 sáng
+  
+  if (lowerPrompt.match(/chiều|tối|đêm|night/)) {
+     currentTime = 15 * 60; // Bắt đầu lúc 3:00 chiều nếu có từ khóa chiều/tối
+  }
+
+  const activities = selectedPlaces.map((p: any) => {
+    const hours = Math.floor(currentTime / 60).toString().padStart(2, '0');
+    const mins = (currentTime % 60).toString().padStart(2, '0');
+    const timeStr = `${hours}:${mins}`;
+    
+    // Thời gian ở lại từ 45 - 120 phút tùy ngẫu nhiên
+    const duration = Math.floor(Math.random() * 4) * 15 + 45; 
+    
+    // Cộng thêm thời gian di chuyển (khoảng 15-30 phút)
+    currentTime += duration + (Math.floor(Math.random() * 2) * 15 + 15);
+    
+    return {
+      place_id: p.place_id,
+      name: p.name,
+      lat: p.lat,
+      lng: p.lng,
+      time: timeStr,
+      duration: duration,
+      category: p.category,
+      description: p.description,
+      image: p.image // Sử dụng ảnh đã được cập nhật
+    };
+  });
+  
+  const resultObj = {
+    city: "Hà Nội",
+    activities: activities
+  };
+  
+  // Chuyển thành chuỗi JSON
+  const resultJson = JSON.stringify(resultObj);
+  
+  // Cắt thành các khối nhỏ (chunk) để mô phỏng streaming AI
+  const chunkSize = 150;
+  const chunks: string[] = [];
+  for (let i = 0; i < resultJson.length; i += chunkSize) {
+    chunks.push(resultJson.substring(i, i + chunkSize));
+  }
+
+  const encoder = new TextEncoder();
+  
+  const stream = new ReadableStream({
+    async start(controller) {
+      for (const chunk of chunks) {
+        await delay(150); // Trễ một chút để tạo hiệu ứng AI đang suy nghĩ và gõ chữ (nhanh hơn bản cũ một chút)
+        controller.enqueue(encoder.encode(chunk));
+      }
+      controller.close();
+    }
+  });
+
+  return new Response(stream, {
+    headers: {
+      'Content-Type': 'text/plain; charset=utf-8',
+      'X-Content-Type-Options': 'nosniff',
+    },
+  });
 }

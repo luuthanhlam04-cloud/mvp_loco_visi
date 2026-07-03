@@ -1,26 +1,61 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-indochine-yellow: #F4EBD0;
+  --color-indochine-yellow-dark: #D6C291;
+  --color-indochine-green: #2B4C3F;
+  --color-indochine-green-light: #4A7A66;
+  --color-indochine-red: #A33327;
+  --color-indochine-dark: #1E1E1E;
+  --color-indochine-bg: #FCFAF5;
+  --color-indochine-card: #FFFFFF;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@custom-variant dark (&:is(.dark *));
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--color-indochine-bg);
+    --foreground: var(--color-indochine-dark);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #111111;
+      --foreground: #f4ebd0;
+      --color-indochine-bg: #111111;
+      --color-indochine-card: #1A1A1A;
+    }
   }
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
+  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden; /* Hide scrollbar on body */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5rem; /* bo tròn map */
+  overflow: hidden;
+}
+
+/* Mapbox overrides */
+.mapboxgl-ctrl-bottom-right {
+  display: none !important;
+}
+.mapboxgl-ctrl-bottom-left {
+  display: none !important;
 }
