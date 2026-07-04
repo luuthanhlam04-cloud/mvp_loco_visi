@@ -270,7 +270,7 @@ export function MapComponent({ activities, activeActivityIndex, hoveredActivityI
       abortController = new AbortController();
       timeoutId = setTimeout(() => abortController?.abort(), 1500); // 1.5s timeout pitching-ready
 
-      const url = `http://router.project-osrm.org/route/v1/driving/${startLng},${startLat};${active.lng},${active.lat}?steps=true&geometries=geojson&overview=full`;
+      const url = `https://router.project-osrm.org/route/v1/driving/${startLng},${startLat};${active.lng},${active.lat}?steps=true&geometries=geojson&overview=full`;
 
       fetch(url, { signal: abortController.signal })
         .then(res => res.json())
