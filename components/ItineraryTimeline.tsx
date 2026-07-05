@@ -122,6 +122,22 @@ export function ItineraryTimeline() {
                   isActive={activeActivityIndex === index}
                   isHovered={hoveredActivityIndex === index}
                   isDragEnabled={!isLoading}
+                  isFirst={index === 0}
+                  isLast={index === validActivities.length - 1}
+                  onMoveUp={() => {
+                    const newActivities = [...validActivities];
+                    const temp = newActivities[index];
+                    newActivities[index] = newActivities[index - 1];
+                    newActivities[index - 1] = temp;
+                    setLocalActivities(newActivities);
+                  }}
+                  onMoveDown={() => {
+                    const newActivities = [...validActivities];
+                    const temp = newActivities[index];
+                    newActivities[index] = newActivities[index + 1];
+                    newActivities[index + 1] = temp;
+                    setLocalActivities(newActivities);
+                  }}
                   onClick={() => {
                     setActivePlaceId(activity.place_id);
                     setIsMobileMapVisible(true);

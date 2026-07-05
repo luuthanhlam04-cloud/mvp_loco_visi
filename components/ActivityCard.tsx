@@ -1,6 +1,6 @@
 import { Activity } from '../lib/zod-schemas';
 import { cn } from '../lib/utils';
-import { Clock, MapPin, GripVertical } from 'lucide-react';
+import { Clock, MapPin, GripVertical, ChevronUp, ChevronDown } from 'lucide-react';
 import { Reorder, useDragControls } from 'framer-motion';
 
 interface ActivityCardProps {
@@ -11,12 +11,16 @@ interface ActivityCardProps {
   onMouseLeave?: () => void;
   onDragStart?: () => void;
   onDragEnd?: () => void;
+  onMoveUp?: () => void;
+  onMoveDown?: () => void;
   isActive?: boolean;
   isHovered?: boolean;
   isDragEnabled?: boolean;
+  isFirst?: boolean;
+  isLast?: boolean;
 }
 
-export function ActivityCard({ activity, index, onClick, onMouseEnter, onMouseLeave, onDragStart, onDragEnd, isActive, isHovered, isDragEnabled = false }: ActivityCardProps) {
+export function ActivityCard({ activity, index, onClick, onMouseEnter, onMouseLeave, onDragStart, onDragEnd, onMoveUp, onMoveDown, isActive, isHovered, isDragEnabled = false, isFirst = false, isLast = false }: ActivityCardProps) {
   const dragControls = useDragControls();
 
   return (
@@ -65,7 +69,7 @@ export function ActivityCard({ activity, index, onClick, onMouseEnter, onMouseLe
             {activity.category}
           </span>
         )}
-        <h3 className="text-lg font-bold text-indochine-dark mb-1 leading-tight group-hover:text-indochine-green transition-colors pr-6">
+        <h3 className="text-lg font-bold text-indochine-dark mb-1 leading-tight group-hover:text-indochine-green transition-colors pr-8">
           {activity.name}
         </h3>
         
@@ -84,16 +88,30 @@ export function ActivityCard({ activity, index, onClick, onMouseEnter, onMouseLe
       </div>
       
       {isDragEnabled && (
-        <div 
-          className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-gray-300 opacity-50 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity cursor-grab active:cursor-grabbing hover:bg-gray-100 rounded-lg"
-          onPointerDown={(e) => {
-            // Ngăn sự kiện click lan truyền để không chọn thẻ khi đang bấm kéo
-            // Nhưng không được preventDefault vì framer-motion cần nhận sự kiện pointer
-            dragControls.start(e);
-          }}
-          style={{ touchAction: 'none' }}
-        >
-          <GripVertical size={20} />
+        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-1 text-gray-400 opacity-80 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity bg-white/80 backdrop-blur shadow-sm border border-gray-100 rounded-lg p-1 z-30">
+          <button 
+            disabled={isFirst}
+            onClick={(e) => { e.stopPropagation(); onMoveUp?.(); }}
+            className="p-1.5 hover:bg-indochine-bg rounded disabled:opacity-20 disabled:hover:bg-transparent text-indochine-green"
+          >
+            <ChevronUp size={20} />
+          </button>
+          
+          <div 
+            className="p-1.5 hover:bg-indochine-bg rounded cursor-grab active:cursor-grabbing text-indochine-green flex justify-center"
+            onPointerDown={(e) => dragControls.start(e)}
+            style={{ touchAction: 'none' }}
+          >
+            <GripVertical size={18} className="opacity-50" />
+          </div>
+
+          <button 
+            disabled={isLast}
+            onClick={(e) => { e.stopPropagation(); onMoveDown?.(); }}
+            className="p-1.5 hover:bg-indochine-bg rounded disabled:opacity-20 disabled:hover:bg-transparent text-indochine-green"
+          >
+            <ChevronDown size={20} />
+          </button>
         </div>
       )}
     </Reorder.Item>

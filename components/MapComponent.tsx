@@ -333,10 +333,10 @@ export function MapComponent({ activities, activeActivityIndex, hoveredActivityI
                 essential: true
               });
               lastAnimatedPlaceId.current = activePlaceId;
+              setShowInstructions(true); // Chỉ mở bảng hướng dẫn khi đây là địa điểm mới được chọn
             }
 
             setActiveRoute(routeData);
-            setShowInstructions(true);
           } else {
             throw new Error('No route found');
           }
@@ -364,6 +364,7 @@ export function MapComponent({ activities, activeActivityIndex, hoveredActivityI
                 essential: true
               });
               lastAnimatedPlaceId.current = activePlaceId;
+              setShowInstructions(true);
             }
           }
         });
