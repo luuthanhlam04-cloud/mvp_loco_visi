@@ -18,8 +18,8 @@ interface MapComponentProps {
 
 const mockRoutes: Record<string, any> = mockRoutesData;
 
-// Vị trí hiện tại: 144 Xuân Thủy, VNU
-const CURRENT_LOCATION = { lat: 21.0378, lng: 105.7816, name: "144 Xuân Thủy, VNU" };
+// Vị trí hiện tại: Tòa A2, Học viện Công nghệ Bưu chính Viễn thông, 96 Trần Phú, Hà Đông
+const CURRENT_LOCATION = { lat: 20.98096, lng: 105.78708, name: "Tòa A2, PTIT, 96 Trần Phú, Hà Đông" };
 
 // Mọi thứ sẽ chạy trên mã nguồn mở MapLibre + OpenStreetMap (không cần Token)
 
