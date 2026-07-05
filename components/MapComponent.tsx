@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { Activity } from '../lib/zod-schemas';
-import mockRoutesData from '../data/mock_routes.json';
 import { RouteInstructions } from './RouteInstructions';
 import { Navigation } from 'lucide-react';
 import { cn } from '../lib/utils';
@@ -18,8 +17,6 @@ interface MapComponentProps {
   isDragging?: boolean;
   isMobileMapVisible?: boolean;
 }
-
-const mockRoutes: Record<string, any> = mockRoutesData;
 
 // Vị trí hiện tại: Tòa A2, Học viện Công nghệ Bưu chính Viễn thông, 96 Trần Phú, Hà Đông
 const CURRENT_LOCATION = { lat: 20.98096, lng: 105.78708, name: "Tòa A2, PTIT, 96 Trần Phú, Hà Đông" };
@@ -64,6 +61,15 @@ export function MapComponent({ activities, activeActivityIndex, hoveredActivityI
   const [activeRoute, setActiveRoute] = useState<any | null>(null);
   const [showInstructions, setShowInstructions] = useState(false);
   const lastAnimatedPlaceId = useRef<string | undefined>(undefined);
+
+  // Dùng refs để giữ lại function mới nhất, tránh lỗi Stale Closure khi gán event cho marker
+  const onMarkerClickRef = useRef(onMarkerClick);
+  const onMarkerHoverRef = useRef(onMarkerHover);
+
+  useEffect(() => {
+    onMarkerClickRef.current = onMarkerClick;
+    onMarkerHoverRef.current = onMarkerHover;
+  }, [onMarkerClick, onMarkerHover]);
 
   // 1. Initialize map (Chạy 1 lần duy nhất)
   useEffect(() => {
@@ -185,9 +191,10 @@ export function MapComponent({ activities, activeActivityIndex, hoveredActivityI
       el.appendChild(inner);
       
       // Thêm event cứng theo vị trí Index (bởi vì thẻ DOM ở vị trí này luôn đại diện cho điểm thứ index)
-      el.addEventListener('click', () => { if (onMarkerClick) onMarkerClick(index); });
-      el.addEventListener('mouseenter', () => { if (onMarkerHover) onMarkerHover(index); });
-      el.addEventListener('mouseleave', () => { if (onMarkerHover) onMarkerHover(undefined); });
+      // SỬ DỤNG REF để gọi hàm mới nhất, nếu dùng closure trực tiếp sẽ dính lỗi "stale closure" gọi sai function sau khi reorder!
+      el.addEventListener('click', () => { if (onMarkerClickRef.current) onMarkerClickRef.current(index); });
+      el.addEventListener('mouseenter', () => { if (onMarkerHoverRef.current) onMarkerHoverRef.current(index); });
+      el.addEventListener('mouseleave', () => { if (onMarkerHoverRef.current) onMarkerHoverRef.current(undefined); });
 
       // Phải cung cấp tọa độ tạm [0,0] để không bị crash khi addTo map
       const marker = new mapboxgl.Marker({ element: el })

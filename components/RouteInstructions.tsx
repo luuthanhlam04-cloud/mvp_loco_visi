@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Navigation, MapPin, X, AlertCircle } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useDragControls } from 'framer-motion';
 
 interface Step {
   instruction: string;
@@ -17,6 +17,8 @@ interface RouteInstructionsProps {
 }
 
 export function RouteInstructions({ distance, duration, steps, destinationName, onClose }: RouteInstructionsProps) {
+  const dragControls = useDragControls();
+
   const formatDistance = (m: number) => {
     if (m < 1000) return `${Math.round(m)}m`;
     return `${(m / 1000).toFixed(1)}km`;
@@ -36,6 +38,8 @@ export function RouteInstructions({ distance, duration, steps, destinationName, 
         exit={{ opacity: 0, y: "100%", scale: 1 }}
         transition={{ type: "spring", bounce: 0, duration: 0.4 }}
         drag="y"
+        dragListener={false}
+        dragControls={dragControls}
         dragConstraints={{ top: 0, bottom: 0 }}
         dragElastic={{ top: 0, bottom: 1 }}
         onDragEnd={(e, info) => {
@@ -46,8 +50,12 @@ export function RouteInstructions({ distance, duration, steps, destinationName, 
         className="absolute bottom-0 inset-x-0 lg:top-6 lg:right-6 lg:bottom-auto lg:left-auto lg:w-80 bg-white/95 backdrop-blur-md rounded-t-3xl lg:rounded-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)] lg:shadow-2xl border border-indochine-yellow-dark/20 overflow-hidden z-[70] flex flex-col max-h-[85vh] lg:max-h-[80%]"
       >
         {/* Drag Handle for Mobile */}
-        <div className="w-full flex justify-center pt-3 pb-1 lg:hidden shrink-0 cursor-grab active:cursor-grabbing">
-          <div className="w-12 h-1.5 bg-gray-300 rounded-full" />
+        <div 
+          className="w-full flex justify-center pt-3 pb-1 lg:hidden shrink-0 cursor-grab active:cursor-grabbing"
+          onPointerDown={(e) => dragControls.start(e)}
+          style={{ touchAction: "none" }}
+        >
+          <div className="w-12 h-1.5 bg-gray-300 rounded-full pointer-events-none" />
         </div>
 
         {/* Header */}
