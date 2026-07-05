@@ -1,7 +1,7 @@
 import { Activity } from '../lib/zod-schemas';
 import { cn } from '../lib/utils';
 import { Clock, MapPin, GripVertical } from 'lucide-react';
-import { Reorder } from 'framer-motion';
+import { Reorder, useDragControls } from 'framer-motion';
 
 interface ActivityCardProps {
   activity: Activity;
@@ -17,11 +17,14 @@ interface ActivityCardProps {
 }
 
 export function ActivityCard({ activity, index, onClick, onMouseEnter, onMouseLeave, onDragStart, onDragEnd, isActive, isHovered, isDragEnabled = false }: ActivityCardProps) {
+  const dragControls = useDragControls();
+
   return (
     <Reorder.Item
       id={`activity-card-${index}`}
       value={activity}
-      dragListener={isDragEnabled}
+      dragListener={false}
+      dragControls={dragControls}
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}
       onMouseEnter={onMouseEnter}
@@ -35,7 +38,6 @@ export function ActivityCard({ activity, index, onClick, onMouseEnter, onMouseLe
       onClick={onClick}
       className={cn(
         "group relative flex flex-col sm:flex-row gap-4 p-4 rounded-3xl transition-[background-color,border-color,box-shadow] duration-300 ease-out border-2",
-        isDragEnabled ? "cursor-grab active:cursor-grabbing" : "cursor-pointer",
         isActive || isHovered
           ? "bg-[#FDFBF7] border-indochine-yellow-dark shadow-xl shadow-indochine-yellow-dark/30 z-20 ring-4 ring-indochine-yellow-dark/10" 
           : "bg-white border-transparent shadow-sm hover:shadow-lg hover:border-indochine-yellow-dark/30"
@@ -82,7 +84,15 @@ export function ActivityCard({ activity, index, onClick, onMouseEnter, onMouseLe
       </div>
       
       {isDragEnabled && (
-        <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div 
+          className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-gray-300 opacity-50 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity cursor-grab active:cursor-grabbing hover:bg-gray-100 rounded-lg"
+          onPointerDown={(e) => {
+            // Ngăn sự kiện click lan truyền để không chọn thẻ khi đang bấm kéo
+            // Nhưng không được preventDefault vì framer-motion cần nhận sự kiện pointer
+            dragControls.start(e);
+          }}
+          style={{ touchAction: 'none' }}
+        >
           <GripVertical size={20} />
         </div>
       )}

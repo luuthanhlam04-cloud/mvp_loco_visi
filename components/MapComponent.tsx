@@ -6,6 +6,8 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { Activity } from '../lib/zod-schemas';
 import mockRoutesData from '../data/mock_routes.json';
 import { RouteInstructions } from './RouteInstructions';
+import { Navigation } from 'lucide-react';
+import { cn } from '../lib/utils';
 
 interface MapComponentProps {
   activities: Activity[];
@@ -14,6 +16,7 @@ interface MapComponentProps {
   onMarkerClick?: (index: number) => void;
   onMarkerHover?: (index?: number) => void;
   isDragging?: boolean;
+  isMobileMapVisible?: boolean;
 }
 
 const mockRoutes: Record<string, any> = mockRoutesData;
@@ -52,13 +55,14 @@ function translateInstruction(m: any) {
   return type ? `${type} ${modStr}` : 'Đi thẳng';
 }
 
-export function MapComponent({ activities, activeActivityIndex, hoveredActivityIndex, onMarkerClick, onMarkerHover, isDragging = false }: MapComponentProps) {
+export function MapComponent({ activities, activeActivityIndex, hoveredActivityIndex, onMarkerClick, onMarkerHover, isDragging = false, isMobileMapVisible = false }: MapComponentProps) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
   const markers = useRef<mapboxgl.Marker[]>([]);
   const currentLocMarker = useRef<mapboxgl.Marker | null>(null);
   
   const [activeRoute, setActiveRoute] = useState<any | null>(null);
+  const [showInstructions, setShowInstructions] = useState(false);
   const lastAnimatedPlaceId = useRef<string | undefined>(undefined);
 
   // 1. Initialize map (Chạy 1 lần duy nhất)
@@ -249,7 +253,10 @@ export function MapComponent({ activities, activeActivityIndex, hoveredActivityI
       
       // Bỏ qua nếu dữ liệu vị trí chưa được load hoàn chỉnh
       if (!active.lat || !active.lng || isNaN(active.lat) || isNaN(active.lng)) {
-        setTimeout(() => setActiveRoute(null), 0);
+        setTimeout(() => {
+          setActiveRoute(null);
+          setShowInstructions(false);
+        }, 0);
         return;
       }
 
@@ -304,7 +311,8 @@ export function MapComponent({ activities, activeActivityIndex, hoveredActivityI
               distance: route.distance,
               duration: route.duration,
               geometry: route.geometry,
-              steps: steps
+              steps: steps,
+              destinationName: active.name
             };
 
             const source = map.current.getSource('route') as mapboxgl.GeoJSONSource;
@@ -328,6 +336,7 @@ export function MapComponent({ activities, activeActivityIndex, hoveredActivityI
             }
 
             setActiveRoute(routeData);
+            setShowInstructions(true);
           } else {
             throw new Error('No route found');
           }
@@ -336,7 +345,10 @@ export function MapComponent({ activities, activeActivityIndex, hoveredActivityI
           // Fallback Ảo diệu: FlyTo lướt mượt mà giấu lỗi mạng
           if (err.name === 'AbortError') console.log('OSRM timeout 1.5s - Fallback to flyTo');
           clearTimeout(timeoutId);
-          setTimeout(() => setActiveRoute(null), 0);
+          setTimeout(() => {
+            setActiveRoute(null);
+            setShowInstructions(false);
+          }, 0);
           
           if (map.current && map.current.isStyleLoaded()) {
             const source = map.current.getSource('route') as mapboxgl.GeoJSONSource;
@@ -357,7 +369,10 @@ export function MapComponent({ activities, activeActivityIndex, hoveredActivityI
         });
 
     } else {
-      setTimeout(() => setActiveRoute(null), 0);
+      setTimeout(() => {
+        setActiveRoute(null);
+        setShowInstructions(false);
+      }, 0);
       if (map.current && map.current.isStyleLoaded()) {
         const source = map.current.getSource('route') as mapboxgl.GeoJSONSource;
         if (source) source.setData({ type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: [] } });
@@ -371,20 +386,35 @@ export function MapComponent({ activities, activeActivityIndex, hoveredActivityI
   }, [activeActivityIndex, activities, isDragging]); // Chỉ update route khi Điểm Đích hoặc Điểm Xuất Phát thực sự thay đổi!
 
   return (
-    <div className="relative w-full h-full p-4 pl-0">
+    <div className="relative w-full h-full lg:p-4 lg:pl-0">
       <div 
         ref={mapContainer} 
-        className="map-container shadow-2xl shadow-indochine-dark/10" 
+        className="map-container shadow-2xl shadow-indochine-dark/10 h-full w-full" 
       />
-      <div className="absolute inset-4 left-0 rounded-[1.5rem] pointer-events-none mix-blend-multiply bg-[#F4EBD0]/10" />
+      <div className="absolute inset-4 left-0 rounded-[1.5rem] pointer-events-none mix-blend-multiply bg-[#F4EBD0]/10 hidden lg:block" />
       
+      {/* Show Directions Floating Button */}
+      <div className="absolute bottom-6 inset-x-0 flex justify-center pointer-events-none z-[60]">
+        <button
+          onClick={() => setShowInstructions(true)}
+          className={cn(
+            "pointer-events-auto bg-indochine-green text-white px-6 py-3 rounded-full font-bold shadow-xl flex items-center gap-2 transition-transform",
+            activeRoute && !showInstructions ? "scale-100 translate-y-0" : "scale-90 translate-y-20 opacity-0"
+          )}
+        >
+          <Navigation size={18} />
+          Xem chỉ đường
+        </button>
+      </div>
+
       {/* Route Instructions Panel */}
-      {activeRoute && (
+      {activeRoute && showInstructions && (
         <RouteInstructions 
           distance={activeRoute.distance}
           duration={activeRoute.duration}
           steps={activeRoute.steps}
-          onClose={() => setActiveRoute(null)}
+          destinationName={activeRoute.destinationName}
+          onClose={() => setShowInstructions(false)}
         />
       )}
     </div>

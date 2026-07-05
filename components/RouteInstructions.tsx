@@ -12,12 +12,11 @@ interface RouteInstructionsProps {
   distance: number; // in meters
   duration: number; // in seconds
   steps: Step[];
+  destinationName?: string;
   onClose: () => void;
 }
 
-export function RouteInstructions({ distance, duration, steps, onClose }: RouteInstructionsProps) {
-  const [isExpanded, setIsExpanded] = useState(true);
-
+export function RouteInstructions({ distance, duration, steps, destinationName, onClose }: RouteInstructionsProps) {
   const formatDistance = (m: number) => {
     if (m < 1000) return `${Math.round(m)}m`;
     return `${(m / 1000).toFixed(1)}km`;
@@ -31,22 +30,39 @@ export function RouteInstructions({ distance, duration, steps, onClose }: RouteI
   return (
     <AnimatePresence>
       <motion.div 
-        initial={{ opacity: 0, x: 50, scale: 0.95 }}
-        animate={{ opacity: 1, x: 0, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.95 }}
-        className="absolute top-6 right-6 w-80 bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-indochine-yellow-dark/20 overflow-hidden z-20 flex flex-col max-h-[80%]"
+        key="route-instructions"
+        initial={{ opacity: 0, y: "100%", scale: 1 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: "100%", scale: 1 }}
+        transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+        drag="y"
+        dragConstraints={{ top: 0, bottom: 0 }}
+        dragElastic={{ top: 0, bottom: 1 }}
+        onDragEnd={(e, info) => {
+          if (info.offset.y > 100 || info.velocity.y > 500) {
+            onClose();
+          }
+        }}
+        className="absolute bottom-0 inset-x-0 lg:top-6 lg:right-6 lg:bottom-auto lg:left-auto lg:w-80 bg-white/95 backdrop-blur-md rounded-t-3xl lg:rounded-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)] lg:shadow-2xl border border-indochine-yellow-dark/20 overflow-hidden z-[70] flex flex-col max-h-[85vh] lg:max-h-[80%]"
       >
+        {/* Drag Handle for Mobile */}
+        <div className="w-full flex justify-center pt-3 pb-1 lg:hidden shrink-0 cursor-grab active:cursor-grabbing">
+          <div className="w-12 h-1.5 bg-gray-300 rounded-full" />
+        </div>
+
         {/* Header */}
-        <div className="p-4 bg-indochine-green text-white flex justify-between items-center shrink-0">
-          <div className="flex items-center gap-2 font-bold">
-            <Navigation size={20} />
-            <h2>Chỉ đường (Mocked)</h2>
+        <div className="p-4 lg:bg-indochine-green lg:text-white flex justify-between items-center shrink-0 border-b border-gray-100 lg:border-none">
+          <div className="flex items-center gap-2 font-bold text-indochine-dark lg:text-white">
+            <Navigation size={20} className="text-indochine-green lg:text-white shrink-0" />
+            <h2 className="truncate max-w-[220px] lg:max-w-none">
+              {destinationName ? `Đến ${destinationName}` : "Chỉ đường (Mocked)"}
+            </h2>
           </div>
           <button 
             onClick={onClose}
-            className="p-1 hover:bg-white/20 rounded-full transition-colors"
+            className="p-2 lg:p-1 hover:bg-gray-100 lg:hover:bg-white/20 rounded-full transition-colors text-gray-500 lg:text-white"
           >
-            <X size={20} />
+            <X size={24} className="lg:w-5 lg:h-5" />
           </button>
         </div>
 
@@ -63,12 +79,12 @@ export function RouteInstructions({ distance, duration, steps, onClose }: RouteI
         </div>
 
         {/* Turn-by-turn Steps */}
-        <div className="flex-grow overflow-y-auto no-scrollbar p-4 space-y-4">
+        <div className="flex-grow overflow-y-auto no-scrollbar p-4 space-y-4 bg-white/50">
           <div className="relative border-l-2 border-indochine-yellow-dark/30 ml-3 space-y-6 pb-4">
             
             <div className="relative pl-6">
               <div className="absolute w-4 h-4 rounded-full bg-indochine-green -left-[9px] top-1 border-2 border-white shadow-sm" />
-              <h4 className="font-bold text-sm text-indochine-dark">Bắt đầu từ Nhà Hát Lớn</h4>
+              <h4 className="font-bold text-sm text-indochine-dark">Điểm bắt đầu</h4>
             </div>
 
             {steps.map((step, idx) => (
